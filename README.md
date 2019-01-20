@@ -1,2 +1,2 @@
-# reverse-dns-nginx-docker-compose
-building a reverse DNS using docker-compose, nginx and letsEncrypt
+# reverse-proxy-nginx-docker-compose
+building a reverse proxy using docker-compose, nginx and letsEncrypt
