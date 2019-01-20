@@ -12,14 +12,14 @@ services:
       - "/etc/nginx/conf.d"
       - "/etc/nginx/vhost.d"
       - "/usr/share/nginx/html"
-      - "./certs:/etc/nginx/certs:rs"
+      - "./certs:/etc/nginx/certs:ro"
 
   nginx-gen:
     restart: always
     image: jwilder/docker-gen
     container_name: nginx-gen
     volumes:
-      - "/var/run/docker.sock:/tmp/docker-sock:ro"
+      - "/var/run/docker.sock:/tmp/docker.sock:ro"
       - "./templates/nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro"
     volumes_from:
       - nginx-reverse
@@ -36,3 +36,8 @@ services:
       - "./certs:/etc/nginx/certs:rw"
     environment:
       - NGINX_DOCKER_GEN_CONTAINER=nginx-gen
+
+networks:
+  default:
+    external:
+      name: arthur_default
