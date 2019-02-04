@@ -5,6 +5,9 @@ services:
     restart: always
     image: nginx
     container_name: nginx-reverse
+    depends_on:
+      - nginx-gen
+      - letsencrypt-nginx-proxy-companion
     ports:
       - "80:80"
       - "443:443"
